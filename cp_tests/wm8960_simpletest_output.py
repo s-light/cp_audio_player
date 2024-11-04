@@ -7,8 +7,8 @@
 # based on https://github.com/adafruit/Adafruit_CircuitPython_WM8960/blob/main/examples/wm8960_simpletest.py
 
 """
-Demonstrates I2C Output on WM8960 Codec by generating a simple tone using synthio. Sounds like an
-alarm clock.
+Demonstrates I2C Output on WM8960 Codec by generating a simple tone using synthio.
+Sounds like an alarm clock.
 """
 
 import time
@@ -19,7 +19,10 @@ import synthio
 from adafruit_wm8960 import WM8960
 
 
-print("wm8960_simpletest.py")
+print("wm8960_simpletest_output.py")
+
+# midi note 29 = F0
+MIDI_NOTE = 29
 
 print("init WM8960 I2C")
 codec = WM8960(board.I2C(), 44100, 16)
@@ -40,10 +43,11 @@ led.switch_to_output()
 
 while True:
     print("note on")
-    synth.press(29)  # midi note 65 = F0
+    synth.press(MIDI_NOTE)
     led.value = True
     time.sleep(0.5)
-    synth.release(65)  # release the note we pressed
-    led.value = False
+
     print("note off")
+    synth.release(MIDI_NOTE)
+    led.value = False
     time.sleep(0.5)
