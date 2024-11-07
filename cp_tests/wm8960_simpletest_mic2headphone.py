@@ -28,14 +28,12 @@ print("setup input as MIC1")
 codec.input = Input.MIC1
 
 # Configure the microphone boost gain
-codec.gain = 0.0
+codec.gain = 0.9
 # will be overwritten by alc
 
 print("with direct routing to headphone")
 # Bypass analog signal to analog output
 codec.monitor = 1.0
-
-codec.alc = True
 
 # Enable the amplifier and set the output volume
 codec.headphone = 0.9

@@ -21,9 +21,6 @@ from adafruit_wm8960 import WM8960
 
 print("wm8960_simpletest_output.py")
 
-led = digitalio.DigitalInOut(board.LED)
-led.switch_to_output()
-
 MIDI_NOTE = 45
 
 print("init WM8960 I2C")
@@ -43,13 +40,22 @@ audio.play(synth)
 while True:
     print("note on")
     synth.press(MIDI_NOTE)
-    led.value = True
     time.sleep(0.5)
 
-    synth.release(MIDI_NOTE)
-    led.value = False
-    # ne next sleep before the print helps to get a nicer release..
-    # otherwise the update of the display seems to mess with the I2S signal generation...
-    time.sleep(0.2)
     print("note off")
-    time.sleep(0.3)
+    synth.release(MIDI_NOTE)
+    time.sleep(0.5)
+
+
+- Bärbel
+    - 1.381,23 €
+    - 39,17 h
+- Almut
+    - 299,76 €
+    - 8,50 h
+- Stefan
+    - 1.102,04 €
+    - 31,25 h
+- Tara
+    - 966,98 €
+    - 27,42 h
